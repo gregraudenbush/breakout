@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Breakout</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <style>
+        canvas {
+            background: lightblue;
+            display: block;
+
+        }
+
+
+        </style>
+    </head>
+    <body>
+        <canvas id="myCanvas" width="320" height="480"></canvas>
+
+        <script>
+            
+            var canvas = document.getElementById("myCanvas");
+            var ctx = canvas.getContext("2d");
+            var paddlewidth = 75;
+            var paddleheight = 16;
+            var paddlex = 140;
+            var paddley = 460;
+
+            var ballwidth = 25;
+            var ballheight = 25;
+            var ballx = 160;
+            var bally = 430;
+
+            
+
+            setInterval(function(){
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                var paddleImage = new Image();
+                var paddleImagesrc = "pics/paddle.png"
+                paddleImage.src = paddleImagesrc
+                ctx.drawImage(paddleImage, paddlex, paddley, paddlewidth, paddleheight);
+
+                var ballImage = new Image();
+                var ballImagesrc = "pics/2-2-basketball-png-file.png"
+                ballImage.src = ballImagesrc
+                ctx.drawImage(ballImage, ballx, bally, ballwidth, ballheight);
+
+                ctx.closePath();
+
+            }, 16);
+            document.addEventListener("keydown", keyDownHandler);
+                function keyDownHandler(e) {
+                    if(e.keyCode == 37){
+                        paddlex = paddlex - 10;
+                        
+                        
+                    }
+
+                    if(e.keyCode == 39){
+                        paddlex = paddlex + 10;
+                        
+                    }
+                
+                }
+            
+        </script>
+    
+    </body>
+</html>
